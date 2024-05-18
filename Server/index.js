@@ -3,7 +3,7 @@ const app = express();
 const dbConnect = require("./Config/Database");
 const dotenv = require("dotenv");
 dotenv.config();
-const taskRouter = require("./Router/taskRouter");
+const User = require("./Router/User")
 const cors = require("cors");
 app.use(express.json());
 
@@ -14,13 +14,9 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/", taskRouter);
-// app.use("/api/v1", taskRouter);
 
+// app.use("/api/v1", User);
 
-// app.use("/",(req,res)=>{
-//   res.send("Hello");
-// })
 const PORT = process.env.PORT || 4000;
 dbConnect();
 
