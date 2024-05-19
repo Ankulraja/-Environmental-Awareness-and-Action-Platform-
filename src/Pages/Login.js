@@ -1,11 +1,9 @@
 import React from "react";
-import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-
-import { login } from "../Service/Operation/Auth";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { login } from "../Service/Operation/Auth";
 
 export const Login = (props) => {
   const navigate = useNavigate();
@@ -17,26 +15,23 @@ export const Login = (props) => {
   });
 
   function changeHandler(event) {
-    setFormData((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
   }
 
   const submitHandler = async (event) => {
     event.preventDefault();
     console.log(formData);
     dispatch(login(formData.email, formData.password, navigate));
-    
   };
 
   return (
-    <div className="w-screen min-h-screen bg-[url(https://images.unsplash.com/photo-1462143338528-eca9936a4d09?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover text-white">
+    <div className="w-screen min-h-screen bg-[url('https://images.unsplash.com/photo-1462143338528-eca9936a4d09?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover text-white">
       <div className="w-full backdrop-blur-sm backdrop-brightness-50 min-h-screen flex flex-row max-lg:flex-col-reverse mx-auto justify-center items-center">
-        <div className="w-1/2 pl-10 flex flex-col justify-center ">
-          <div className="w-[400px]">
+        <div className="w-full max-w-lg px-6 py-10 lg:py-0 lg:px-10 flex flex-col justify-center">
+          <div className="w-full">
             <h1 className="text-3xl font-bold">Welcome Back</h1>
             <p className="my-5">
               Build skills for today, tomorrow, and beyond.{" "}
@@ -45,10 +40,10 @@ export const Login = (props) => {
               </span>
             </p>
           </div>
-          <form onSubmit={submitHandler} className="w-[400px]">
-            <div className="flex justify-between gap-2 flex-col">
-              <label className="w-full flex flex-col items-start relative mt-1">
-                <p className="text-[0.875rem] text-gray-50 mb-1 leading-[1.375rem] ml-2">
+          <form onSubmit={submitHandler} className="w-full">
+            <div className="flex flex-col gap-6">
+              <label className="w-full flex flex-col items-start relative">
+                <p className="text-[0.875rem] text-gray-50 mb-1 leading-[1.375rem]">
                   Email Address <span className="text-red-500">*</span>
                 </p>
                 <input
@@ -61,8 +56,10 @@ export const Login = (props) => {
                   className="bg-richblack-800 rounded-[0.5rem] text-black p-[12px] w-full h-10 border-b border-b-richblack-200"
                 ></input>
               </label>
-              <label className="relative w-full ">
-                <p className="my-[10px]">Password</p>
+              <label className="relative w-full">
+                <p className="text-[0.875rem] text-gray-50 mb-1 leading-[1.375rem]">
+                  Password
+                </p>
                 <input
                   type={showPassword ? "text" : "password"}
                   required
@@ -79,7 +76,7 @@ export const Login = (props) => {
                   {!showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </span>
               </label>
-              <div className=" flex w-full text-blue-400 justify-end">
+              <div className="flex w-full text-blue-400 justify-end">
                 <Link to="/forgotPassword" className="text-xs">
                   Forgot Password?
                 </Link>
@@ -101,20 +98,13 @@ export const Login = (props) => {
             </div>
           </form>
         </div>
-        <div className="w-1/2 relative flex justify-center my-20 ">
-          <div className="w-[480px] relative">
-            <div className=" z-30 relative">
-              <img
-                className="w-[400px] h-80 rounded-[50%] shadow-[_0px_0px_2px_rgb(0,255,4)] "
-                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2F2ZSUyMG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
-                alt="youtube"
-              ></img>
-            </div>
-            {/* <img
-              className="absolute w-full  left-[5%] top-[5%]"
-              src="https://res.cloudinary.com/dkoezhi9u/image/upload/v1711576419/UploadOnly/download_moc7dv.png"
-              alt="youtube"
-            ></img> */}
+        <div className="w-full max-w-lg flex justify-center items-center py-10 lg:py-0">
+          <div className="relative">
+            <img
+              className="w-[400px] h-80 rounded-[50%] shadow-[_0px_0px_2px_rgb(0,255,4)]"
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2F2ZSUyMG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="nature"
+            ></img>
           </div>
         </div>
       </div>

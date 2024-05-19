@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ProfileDropDown from "./ProfileDropDown";
@@ -20,6 +19,7 @@ const Navbar = () => {
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
   };
+
   const [subLinks, setSublinks] = useState([]);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,6 +32,14 @@ const Navbar = () => {
         <Link to="/">
           <img alt="logo" src={logo} className="w-16" loading="lazy" />
         </Link>
+
+        {/* Hamburger Menu for Mobile */}
+        <div
+          className="md:hidden text-[#AFB2BF] scale-150 cursor-pointer"
+          onClick={toggleMenu}
+        >
+          <RxHamburgerMenu />
+        </div>
 
         {/* Nav Links */}
         <nav
@@ -83,9 +91,29 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+
+          {/* Login/SignUp/Dashboard for Mobile */}
+          <div className="md:hidden flex flex-col gap-4 items-center pb-4">
+            {token === null ? (
+              <>
+                <Link to="/login">
+                  <button className="border border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100 rounded-md">
+                    Log in
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="border border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100 rounded-md">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <ProfileDropDown />
+            )}
+          </div>
         </nav>
 
-        {/* Login/SignUp/Dashboard */}
+        {/* Login/SignUp/Dashboard for Desktop */}
         <div className="hidden md:flex gap-4 items-center">
           {token === null ? (
             <>
@@ -103,14 +131,6 @@ const Navbar = () => {
           ) : (
             <ProfileDropDown />
           )}
-        </div>
-
-        {/* Hamburger Menu for Mobile */}
-        <div
-          className="md:hidden text-[#AFB2BF] scale-150 cursor-pointer"
-          onClick={toggleMenu}
-        >
-          <RxHamburgerMenu />
         </div>
       </div>
     </div>
