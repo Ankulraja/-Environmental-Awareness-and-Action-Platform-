@@ -58,7 +58,7 @@ export const Login = (props) => {
                   placeholder="Enter your Email"
                   onChange={changeHandler}
                   name="email"
-                  className="bg-richblack-800 rounded-[0.5rem] text-gray-50 p-[12px] w-full h-10 border-b border-b-richblack-200"
+                  className="bg-richblack-800 rounded-[0.5rem] text-black p-[12px] w-full h-10 border-b border-b-richblack-200"
                 ></input>
               </label>
               <label className="relative w-full ">
@@ -70,7 +70,7 @@ export const Login = (props) => {
                   placeholder="Enter your password"
                   onChange={changeHandler}
                   name="password"
-                  className="bg-richblack-800 rounded-[0.5rem] text-gray-50 p-[12px] w-full h-10 border-b border-b-richblack-200"
+                  className="bg-richblack-800 rounded-[0.5rem] text-black p-[12px] w-full h-10 border-b border-b-richblack-200"
                 ></input>
                 <span
                   onClick={() => setShowPassword(!showPassword)}

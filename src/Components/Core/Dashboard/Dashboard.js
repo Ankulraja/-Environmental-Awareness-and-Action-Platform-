@@ -5,6 +5,7 @@ import { HiBars3 } from "react-icons/hi2";
 import { useState } from "react";
 import { setSideBar } from "../../../Slice/taskSlice";
 import { RxCross2 } from "react-icons/rx";
+import Footer from "../../Common/Footer";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { openSideBar } = useSelector((state) => state.task);
@@ -13,7 +14,8 @@ const Dashboard = () => {
     console.log("openSideBar", openSideBar);
   };
   return (
-    <div className=" bg-richblack-900 text-black relative flex min-h-[calc(100vh-3.5rem)]">
+    <div>
+      <div className=" bg-richblack-900 text-black relative flex min-h-[calc(100vh-3.5rem)]">
       <div
         className={`w-40 max-md:absolute max-md:left-0 transition-all   ${
           openSideBar ? "max-md:visible" : "max-md:invisible"
@@ -27,10 +29,14 @@ const Dashboard = () => {
       >
         {!openSideBar ? <HiBars3></HiBars3> : <RxCross2></RxCross2>}{" "}
       </button>
-      <div className="h-[calc(100vh-3.5rem)] max-md:w-full flex-1 overflow-auto">
-        <div className="mx-auto w-full max-w-[1200px] max-md:w-full py-10 px-10">
+      <div className="h-[calc(100vh-3.5rem)] bg-gradient-to-b from-lime-800 via-emerald-700 to-teal-900 max-md:w-full flex-1 overflow-auto">
+        <div className="mx-auto  w-full max-w-[1200px] max-md:w-full py-10 px-10">
           <Outlet />
         </div>
+      </div>
+    </div>
+      <div>
+      <Footer></Footer>
       </div>
     </div>
   );

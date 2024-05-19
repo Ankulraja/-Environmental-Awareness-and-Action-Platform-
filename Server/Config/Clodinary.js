@@ -3,6 +3,7 @@
 const cloudinary= require('cloudinary').v2;
 
 const cloudinaryConnect= (req,res)=>{
+    console.log("Here commig")
     try{
         cloudinary.config({
             cloud_name:process.env.CLOUD_NAME,

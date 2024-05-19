@@ -9,6 +9,7 @@ const mailSender= async(email,title,body)=>{
                 pass:process.env.MAIL_PASS
             }
         })
+        // console.log("Upto 2",email ,title, body)
         let info= await Transport.sendMail({
             from:"Ankul Raja" ,
             to:`${email}`,

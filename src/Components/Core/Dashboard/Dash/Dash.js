@@ -1,39 +1,33 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import DashCard from "../Dash/DashCard";
-import { useSelector } from "react-redux";
-import {REACT_BASE_URL} from "../../../../Urls"
+// Countries.js
+import React from "react";
+import CountryCard from "./DashCard";
+import Footer from "../../../Common/Footer";
+import {DashLink} from "../../../../Data/DashLink"
 const Dash = () => {
-  const [taskData, setTaskData] = useState([]);
-  const {refersh} = useSelector((state)=>state.task)
-  const callgetAllTasks = async () => {
-    try {
-       console.log("yaha aaya")
-      const result = await axios.get(`${REACT_BASE_URL}/getAllTask`);
-      console.log("result",result)
-      console.log("call complete")
-      setTaskData(result.data.allTask.reverse()); 
- 
-    } catch (err) {
-      console.log("error in creating task", err);
-      
-    }
-  };
-  useEffect(() => {
-    callgetAllTasks();
-  }, [refersh]);
+  
 
-
-  return  <div className="w-full px-5 py-5 flex items-center">
-  {taskData?.length > 0 && (
-    <div className="w-full py-5 flex gap-5 justify-between  flex-wrap">
-      {taskData?.map((value, index) => (
-        <DashCard key={index} value={value}></DashCard>
-      ))}
+  return (
+    <div>
+      <div className=" text-white py-16">
+      <div className="container mx-auto text-center">
+        <h1 className="text-3xl font-bold mb-8">
+          We plant in 35+ countries with local organizations
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {DashLink?.map((Value, index) => (
+            <CountryCard
+              key={index}
+              image={Value.image}
+              title={Value.title}
+              description={Value.description}
+              color={Value.color}
+            />
+          ))}
+        </div>
+      </div>
     </div>
-  )}
-</div>
-
+    </div>
+  );
 };
+
 export default Dash;

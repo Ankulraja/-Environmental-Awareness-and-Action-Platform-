@@ -23,12 +23,11 @@ const {
 
 router.post("/signup", signup);
 router.post("/login", login);
-// router.post("/OtpGenerator", OtpGenerator);
-// router.post("/changePassword", auth, changePassword);
+// router.post("/OtpGenerator", ()=>{
+//   console.log("Hello World")
+// });
+router.post("/OtpGenerator", OtpGenerator);
 
-// router.post("/resetPasswordToken", resetPasswordToken);
-
-// router.post("/reset-password", resetPassword);
 
 
 

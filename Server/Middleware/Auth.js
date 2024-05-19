@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../Module/User");
 
-// auth ,isStudent ,isAdmin
+// auth
 
 exports.auth = async (req, res, next) => {
   
@@ -12,6 +12,7 @@ exports.auth = async (req, res, next) => {
       req.body.token ||
       req.cookies.token ||
       req.header("Authorization").replace("Bearer ", "");
+      console.log("first",token)
     if (!token) {
       return res.status(403).json({
         success: false,
@@ -91,23 +92,23 @@ exports.isAdmin = async (req, res, next) => {
 };
   
 
-//isInstructor 
+// //isInstructor 
 
 
-exports.isInstructor= async (req, res, next) => {
-  try {
-    const role = req.user.accountType;
-    if (role !== "Instructor") {
-      return res.status(401).json({
-        success: false,
-        message: "This Portal Only For Instructor",
-      });
-    }
-    next();
-  } catch (e) {
-    return res.status(500).json({
-      success: false,
-      message: "Error in Verification of Instructor Portal",
-    });
-  }
-};
+// exports.isInstructor= async (req, res, next) => {
+//   try {
+//     const role = req.user.accountType;
+//     if (role !== "Instructor") {
+//       return res.status(401).json({
+//         success: false,
+//         message: "This Portal Only For Instructor",
+//       });
+//     }
+//     next();
+//   } catch (e) {
+//     return res.status(500).json({
+//       success: false,
+//       message: "Error in Verification of Instructor Portal",
+//     });
+//   }
+// };

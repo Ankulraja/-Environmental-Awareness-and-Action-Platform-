@@ -12,7 +12,8 @@ import Login from "./Pages/Login";
 import {Signup} from "./Pages/Signup";
 import AddTask from "./Components/Core/Dashboard/Add Task/AddTask";
 import Dash from "./Components/Core/Dashboard/Dash/Dash";
-import Setting from "./Components/Core/Dashboard/Setting/Setting";
+import VerifyEmail from "./Pages/VerifyEmail"
+import SettingPage from "./Components/Core/Dashboard/Setting/SettingPage";
 
 function App() {
   return (
@@ -37,10 +38,11 @@ function App() {
         </Route>
         <Route path="/signup" element={<Signup></Signup>}>
           {" "}
-        </Route>
-        <Route path="/logout" element={<Login></Login>}>
+        </Route>    
+        <Route path="/verify-email" element={<VerifyEmail></VerifyEmail>}>
           {" "}
         </Route>
+
         <Route element={<Dashboard></Dashboard>}>
           <Route path="/dashboard/my-profile" element={<Myprofile></Myprofile>}>
             {" "}
@@ -51,7 +53,7 @@ function App() {
           <Route path="/dashboard/dash" element={<Dash></Dash>}>
             {" "}
           </Route>
-          <Route path="/dashboard/setting" element={<Setting></Setting>}>
+          <Route path="/dashboard/setting" element={<SettingPage></SettingPage>}>
             {" "}
           </Route>
         </Route>

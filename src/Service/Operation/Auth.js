@@ -18,7 +18,7 @@ export function sendOtp(email, navigate){
   return async (dispatch) => {
      const toastId = toast.loading("Loading...")
      dispatch(setLoading(true));
-
+     console.log("Path", SENDOTP_API)
      try {
       const response = await apiConnector("POST", SENDOTP_API, {
         email,
@@ -106,16 +106,23 @@ export function login(email, password, navigate){
       if(!response.data.success){
         throw new Error(response.data.message)
       }
-
+      console.log("2",response.data)
       toast.success("Login Successfully")
       dispatch(setToken(response.data.token));
       const userImage = response.data?.existingUser?.image
         ? response.data.existingUser.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.existingUser.firstName} ${response.data.existingUser.lastName}`
+      console.log("3")
+
       dispatch(setUser({ ...response.data.existingUser, image: userImage }))
+      console.log("4")
       localStorage.setItem("token", JSON.stringify(response.data.token))
+      console.log("6")
       localStorage.setItem("user", JSON.stringify(response.data.existingUser))
+      console.log("6")
+
       navigate("/dashboard/my-profile")
+
      } catch (error) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Could Not LOGIN")

@@ -66,12 +66,11 @@ exports.signup = async (req, res) => {
       lastName,
       password,
       confirmPassword,
-      accountType,
-      // contactNumber,
       otp,
     } = req.body;
 
     // Validate The Data
+    console.log("Comming for Signup 1")
     if (
       !email ||
       !firstName ||
@@ -159,10 +158,11 @@ exports.signup = async (req, res) => {
         lastName,
         email,
         password: hashPassword,
-        accountType,
         additionalDetails: profileData._id,
-        image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+        image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,  
       })
+    console.log("Comming for Signup 4",userData);
+
     }catch(e){
       console.log("error in signup  ",e)
     }
@@ -186,6 +186,7 @@ exports.login = async (req, res) => {
   try {
     // Fetch The Data
     const { email, password } = req.body;
+    console.log("for login",email,password);
     // Validate The Data
     if (!email || !password) {
       return res.status(403).json({
@@ -194,6 +195,7 @@ exports.login = async (req, res) => {
       });
     }
    
+    console.log("2nd")
     // Check Wheather user Exist or Not Exist
     const user = await User.findOne({ email });
     if (!user) {
@@ -215,18 +217,19 @@ exports.login = async (req, res) => {
       });
     }
   
-    console.log("dbishfb")
+    console.log("dbishfb") 
 
    
     const payload = {
       email: user.email,
       id: user._id,
-      accountType: user.accountType,
     };
+    console.log("sdf")
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "2h",
     });
-
+    console.log("sdf")
+    
     user.token = token;
     user.password = undefined;
 
@@ -235,11 +238,10 @@ exports.login = async (req, res) => {
       httpOnly: true,
     };
 
-    
     res.cookie("token", token, options).status(200).json({
       success: true,
       token,
-      user,
+      existingUser:user,
       message: "Login Successfully",
     });
   } catch (e) {
