@@ -15,8 +15,8 @@
     },
     {
       id: 3,
-      name: "Add Task",
-      path: "/dashboard/add-task",
+      name: "Initiative",
+      path: "/dashboard/initiative",
       icon: "VscVm",
     },
   ];

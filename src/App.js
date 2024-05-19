@@ -10,10 +10,11 @@ import Contact from "./Pages/Contact";
 import FAQ from "./Pages/FAQ";
 import Login from "./Pages/Login";
 import {Signup} from "./Pages/Signup";
-import AddTask from "./Components/Core/Dashboard/Add Task/AddTask";
 import Dash from "./Components/Core/Dashboard/Dash/Dash";
 import VerifyEmail from "./Pages/VerifyEmail"
 import SettingPage from "./Components/Core/Dashboard/Setting/SettingPage";
+import indexInitiative from './Components/Core/Dashboard/Initiatives/InitiatieIndex';
+import InitiatieIndex from "./Components/Core/Dashboard/Initiatives/InitiatieIndex";
 
 function App() {
   return (
@@ -24,15 +25,15 @@ function App() {
         <Route path="/" element={<Home></Home>}>
           {" "}
         </Route>
-        <Route path="/about" element={<About></About>}>
+        {/* <Route path="/about" element={<About></About>}>
           {" "}
-        </Route>
+        </Route> */}
         <Route path="/contact" element={<Contact></Contact>}>
           {" "}
         </Route>
-        <Route path="/doubts" element={<FAQ></FAQ>}>
+        {/* <Route path="/doubts" element={<FAQ></FAQ>}>
           {" "}
-        </Route>
+        </Route> */}
         <Route path="/login" element={<Login></Login>}>
           {" "}
         </Route>
@@ -47,7 +48,7 @@ function App() {
           <Route path="/dashboard/my-profile" element={<Myprofile></Myprofile>}>
             {" "}
           </Route>
-          <Route path="/dashboard/add-task" element={<AddTask></AddTask>}>
+          <Route path="/dashboard/initiative" element={<InitiatieIndex></InitiatieIndex>}>
             {" "}
           </Route>
           <Route path="/dashboard/dash" element={<Dash></Dash>}>
