@@ -12,12 +12,12 @@ const cloudinaryConnect = require("./Config/Clodinary");
 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({
-//   origin: 'https://task-management-system-gray.vercel.app',
-//   credentials: true
-// }));
+app.use(cors({
+  origin: 'https://environmental-awareness-and-action-platform.vercel.app/',
+  credentials: true
+}));
 
-app.use(cors());
+// app.use(cors());
 app.use(
   fileUpload({
       useTempFiles: true,
